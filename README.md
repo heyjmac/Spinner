@@ -4,6 +4,12 @@
 
 **Spinner** is a tool for measuring and improving sales performance using the SPIN methodology. Based on the concepts in the **SPIN Selling** book, it provides a way to analyze sales conversations. The interface was created using [Webcrumbs Frontend AI](https://tools.webcrumbs.org).
 
+## User Interface
+
+Spinner’s interface was built using [Webcrumbs Frontend AI](https://tools.webcrumbs.org). It is practical and designed to meet user needs. Explore it through this [link](https://share.webcrumbs.org/ne6ep_).
+
+![Webcrumbs](interface.png)
+
 ## About Spinner
 
 Spinner applies the SPIN methodology to sales training and performance measurement. It keeps data on the user’s device and avoids unnecessary complexity, offering an open-source solution.
@@ -36,12 +42,6 @@ Spinner applies the SPIN methodology to sales training and performance measureme
    ```bash
    npm start
    ```
-
-## User Interface
-
-Spinner’s interface was built using [Webcrumbs Frontend AI](https://tools.webcrumbs.org). It is practical and designed to meet user needs. Explore it through this [link](https://share.webcrumbs.org/ne6ep_).
-
-![Webcrumbs](interface.png)
 
 ## License
 
