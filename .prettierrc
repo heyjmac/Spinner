@@ -1,0 +1,9 @@
+{
+  "printWidth": 120,
+  "bracketSpacing": true,
+  "arrayBracketNewline": "consistent",
+  "objectCurlyNewline": { "multiline": true, "minProperties": 5 },
+  "trailingComma": "es5",
+  "semi": true,
+  "singleQuote": true
+}

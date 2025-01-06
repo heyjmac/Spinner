@@ -1,0 +1,120 @@
+{
+    "name": "Webcrumbs Theme",
+    "type": "dark",
+    "colors": {
+        "editor.background": "#1B2D38",
+        "editor.foreground": "#32424C",
+        "editor.selectionBackground": "#44475a",
+        "editor.lineHighlightBackground": "#44475a",
+        "editorCursor.foreground": "#f8f8f2",
+        "editorWhitespace.foreground": "#3B3A32",
+        "editorIndentGuide.activeBackground": "#9D550F",
+        "editor.selectionHighlightBorder": "#222218"
+    },
+    "tokenColors": [
+        {
+            "scope": [
+                "comment",
+                "prolog",
+                "doctype",
+                "cdata",
+                "punctuation"
+            ],
+            "settings": {
+                "foreground": "#687a85"
+            }
+        },
+        {
+            "scope": [
+                "property",
+                "tag",
+                "constant",
+                "symbol",
+                "deleted"
+            ],
+            "settings": {
+                "foreground": "#b1a6e8"
+            }
+        },
+        {
+            "scope": [
+                "boolean",
+                "number"
+            ],
+            "settings": {
+                "foreground": "#A39CF4"
+            }
+        },
+        {
+            "scope": [
+                "selector",
+                "attr-name",
+                "string",
+                "char",
+                "builtin",
+                "inserted"
+            ],
+            "settings": {
+                "foreground": "#FE7757"
+            }
+        },
+        {
+            "scope": [
+                "operator",
+                "entity",
+                "url",
+                "language-css .string",
+                "style .string",
+                "variable"
+            ],
+            "settings": {
+                "foreground": "#f8f8f2"
+            }
+        },
+        {
+            "scope": [
+                "atrule",
+                "attr-value",
+                "function",
+                "class-name"
+            ],
+            "settings": {
+                "foreground": "#A5D6FF"
+            }
+        },
+        {
+            "scope": "keyword",
+            "settings": {
+                "foreground": "#8be9fd"
+            }
+        },
+        {
+            "scope": [
+                "regex",
+                "important"
+            ],
+            "settings": {
+                "foreground": "#ffb86c"
+            }
+        },
+        {
+            "scope": "bold",
+            "settings": {
+                "fontStyle": "bold"
+            }
+        },
+        {
+            "scope": "italic",
+            "settings": {
+                "fontStyle": "italic"
+            }
+        },
+        {
+            "scope": "entity",
+            "settings": {
+                "fontStyle": "italic",
+                "foreground": "#f8f8f2"
+            }
+        }
+    ]
+}

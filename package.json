@@ -1,0 +1,25 @@
+{
+  "name": "sales-listener",
+  "version": "1.0.0",
+  "main": "main/main.js",
+  "scripts": {
+    "start": "concurrently \"BROWSER=none npm start --prefix frontend\" \"electron .\"",
+    "build": "npm run build --prefix frontend && electron-builder"
+  },
+  "build": {
+    "appId": "com.sales.listener",
+    "productName": "Sales Listener",
+    "directories": {
+      "output": "dist"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "concurrently": "^9.1.2",
+    "electron": "^33.2.1",
+    "electron-builder": "^25.1.8"
+  }
+}

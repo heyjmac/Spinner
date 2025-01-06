@@ -1,0 +1,22 @@
+{
+    "name": "webcrumbs-theme",
+    "displayName": "Webcrumbs Theme",
+    "description": "The Webcrumbs.org theme for VS Code.",
+    "version": "0.0.1",
+    "publisher": "webcrumbs",
+    "engines": {
+        "vscode": "^1.50.0"
+    },
+    "categories": [
+        "Themes"
+    ],
+    "contributes": {
+        "themes": [
+            {
+                "label": "Webcrumbs Theme",
+                "uiTheme": "vs-dark",
+                "path": "./vscode-theme.json"
+            }
+        ]
+    }
+}
