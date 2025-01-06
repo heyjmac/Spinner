@@ -6,7 +6,7 @@
 
 ## User Interface
 
-Spinner’s interface was built using [Webcrumbs Frontend AI](https://tools.webcrumbs.org). It is practical and designed to meet user needs. Explore it through this [link](https://share.webcrumbs.org/ne6ep_).
+Spinner’s interface was built using [Webcrumbs Frontend AI](https://tools.webcrumbs.org). It is practical and designed to meet user needs.
 
 ![Webcrumbs](interface.png)
 
