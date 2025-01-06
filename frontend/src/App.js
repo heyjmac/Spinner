@@ -59,6 +59,17 @@ const App = () => {
     }, 300);
   };
 
+  const handleMouseDown = (stage, event) => {
+    // Check the button pressed
+    if (event.button === 0) {
+      // Left click: Increment rep
+      updateScore(stage, 'rep');
+    } else if (event.button === 2) {
+      // Right click: Increment client
+      updateScore(stage, 'client');
+    }
+  };
+
   const getAudioStream = async () => {
     const devices = await navigator.mediaDevices.enumerateDevices();
     const systemDevice = devices.find((device) => device.kind === 'audiooutput' && device.deviceId === 'default');
@@ -173,104 +184,100 @@ const App = () => {
   };
 
   return (
-    <div className="relative select-none opacity-[95%] h-screen backdrop-blur-sm	w-full bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 rounded-lg border border-gray-500 flex items-center px-4 py-5 text-neutral-50 gap-4">
-      {/* Close Button */}
-      <button className="w-[24px] h-[24px] rounded-full bg-gray-600 flex items-center justify-center hover:bg-gray-500">
-        <span className="material-symbols-outlined text-neutral-50 text-base">close</span>
-      </button>
+    <div id="webcrumbs" onContextMenu={(e) => e.preventDefault()}>
+      <div className="relative select-none opacity-[95%] h-screen backdrop-blur-sm	w-full bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 rounded-lg border border-gray-500 flex items-center px-4 py-5 text-neutral-50 gap-4">
+        {/* Close Button */}
+        <button className="w-[24px] h-[24px] rounded-full bg-gray-600 flex items-center justify-center hover:bg-gray-500">
+          <span className="material-symbols-outlined text-neutral-50 text-base">close</span>
+        </button>
 
-      {/* Sales Stages */}
-      <div className="flex flex-wrap gap-3 flex-1 justify-between">
-        {stages.map((item, index) => (
-          <div
-            key={index}
-            className={`cursor-pointer relative flex flex-col items-center p-2 rounded-md text-xs shadow-sm border w-[100px] transition-transform duration-200 ${
-              activeStage === item.label
-                ? highlight === 'green'
-                  ? 'bg-green-900 border-green-500'
-                  : 'bg-blue-900 border-blue-500'
-                : 'bg-gray-800 border-gray-500'
-            } hover:scale-105 hover:shadow-lg hover:border-white`}
-          >
-            <span className="material-symbols-outlined text-xl">{item.icon}</span>
-            <p className="mt-1 mb-2 font-semibold text-center">{item.label}</p>
+        {/* Sales Stages */}
+        <div className="flex flex-wrap gap-3 flex-1 justify-between">
+          {stages.map((item, index) => (
+            <div
+              key={index}
+              className={`cursor-pointer relative flex flex-col items-center p-2 rounded-md text-xs shadow-sm border w-[100px] transition-transform duration-200 ${
+                activeStage === item.label
+                  ? highlight === 'green'
+                    ? 'bg-green-900 border-green-500'
+                    : 'bg-blue-900 border-blue-500'
+                  : 'bg-gray-800 border-gray-500'
+              } hover:scale-105 hover:shadow-lg hover:border-white`}
+              onMouseDown={(event) => handleMouseDown(item.label, event)}
+            >
+              <span className="material-symbols-outlined text-xl">{item.icon}</span>
+              <p className="mt-1 mb-2 font-semibold text-center">{item.label}</p>
 
-            {/* Rep and Client Scores */}
-            <div className="flex gap-1 mt-1 mb-1">
-              <span className="w-[16px] h-[16px] rounded-full bg-blue-500 text-[10px] text-center text-black flex items-center justify-center">
-                {ballCounts[item.label].rep}
-              </span>
-              <span className="w-[16px] h-[16px] rounded-full bg-green-500 text-[10px] text-center text-black flex items-center justify-center">
-                {ballCounts[item.label].client}
-              </span>
+              {/* Rep and Client Scores */}
+              <div className="flex gap-1 mt-1 mb-1">
+                <span className="w-[16px] h-[16px] rounded-full bg-blue-500 text-[10px] text-center text-black flex items-center justify-center">
+                  {ballCounts[item.label].rep}
+                </span>
+                <span className="w-[16px] h-[16px] rounded-full bg-green-500 text-[10px] text-center text-black flex items-center justify-center">
+                  {ballCounts[item.label].client}
+                </span>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
-      {/* Settings Button */}
+        {/* Settings Button */}
 
-      {audioChunksRef.current.length > 0 ? (
-        <button
-          className="w-[24px] h-[24px] rounded-full bg-gray-600 flex items-center justify-center hover:bg-gray-500"
-          onClick={deleteRecordings}
-        >
-          <span className="material-symbols-outlined text-neutral-50 text-base">replay</span>
-        </button>
-      ) : (
-        <button className="w-[24px] h-[24px] rounded-full bg-gray-600 flex items-center justify-center cursor-default">
-          <span className="material-symbols-outlined text-neutral-50 opacity-50 text-base">replay</span>
-        </button>
-      )}
-      {recording ? (
-        <button
-          className="w-[24px] h-[24px] rounded-full bg-red-800 flex items-center justify-center hover:bg-red-700"
-          onClick={stopRecording}
-        >
-          <span className="material-symbols-outlined text-primary-50 text-base">pause</span>
-        </button>
-      ) : (
-        <button
-          className="w-[24px] h-[24px] rounded-full bg-red-600 flex items-center justify-center hover:bg-red-500"
-          onClick={startRecording}
-        >
-          <span className="material-symbols-outlined text-primary-50 text-base">mic</span>
-        </button>
-      )}
-      {/* Simulate Button (for Testing) */}
-      <div className="absolute bottom-0 right-1/2">
-        <button onClick={() => updateScore('Problem', 'rep')} className="bg-blue-500 px-4 py-2 rounded text-white mr-2">
-          Rep Question
-        </button>
-        <button onClick={() => updateScore('Problem', 'client')} className="bg-green-500 px-4 py-2 rounded text-white">
-          Client Answer
-        </button>
-
-        {audioChunksRef.current.length > 0 && (
-          <div className="mt-6">
-            <h3 className="text-white">Recorded Audio (Mic):</h3>
-            {audioChunksRef.current.map((chunk, index) => (
-              <audio key={index} controls>
-                <source src={URL.createObjectURL(new Blob([chunk], { type: 'audio/wav' }))} />
-              </audio>
-            ))}
-          </div>
+        {audioChunksRef.current.length > 0 ? (
+          <button
+            className="w-[24px] h-[24px] rounded-full bg-gray-600 flex items-center justify-center hover:bg-gray-500"
+            onClick={deleteRecordings}
+          >
+            <span className="material-symbols-outlined text-neutral-50 text-base">replay</span>
+          </button>
+        ) : (
+          <button className="w-[24px] h-[24px] rounded-full bg-gray-600 flex items-center justify-center cursor-default">
+            <span className="material-symbols-outlined text-neutral-50 opacity-50 text-base">replay</span>
+          </button>
         )}
-
-        {transcriptions.length > 0 && (
-          <div className="mt-6">
-            {transcriptions.map(
-              ({ message, speaker }, index) =>
-                message && (
-                  <div key={index} className="p-2 bg-gray-800 rounded text-white mb-2">
-                    {speaker}: {message}
-                  </div>
-                )
-            )}
-          </div>
+        {recording ? (
+          <button
+            className="w-[24px] h-[24px] rounded-full bg-red-800 flex items-center justify-center hover:bg-red-700"
+            onClick={stopRecording}
+          >
+            <span className="material-symbols-outlined text-primary-50 text-base">pause</span>
+          </button>
+        ) : (
+          <button
+            className="w-[24px] h-[24px] rounded-full bg-red-600 flex items-center justify-center hover:bg-red-500"
+            onClick={startRecording}
+          >
+            <span className="material-symbols-outlined text-primary-50 text-base">mic</span>
+          </button>
         )}
+        {/* For Testing */}
+        <div className="absolute bottom-0 right-1/2">
+          {audioChunksRef.current.length > 0 && (
+            <div className="mt-6">
+              <h3 className="text-white">Recorded Audio (Mic):</h3>
+              {audioChunksRef.current.map((chunk, index) => (
+                <audio key={index} controls>
+                  <source src={URL.createObjectURL(new Blob([chunk], { type: 'audio/wav' }))} />
+                </audio>
+              ))}
+            </div>
+          )}
+
+          {transcriptions.length > 0 && (
+            <div className="mt-6">
+              {transcriptions.map(
+                ({ message, speaker }, index) =>
+                  message && (
+                    <div key={index} className="p-2 bg-gray-800 rounded text-white mb-2">
+                      {speaker}: {message}
+                    </div>
+                  )
+              )}
+            </div>
+          )}
+        </div>
+        <ApiKeyModal isOpen={isApiModalOpen} onSave={handleApiSave} />
       </div>
-      <ApiKeyModal isOpen={isApiModalOpen} onSave={handleApiSave} />
     </div>
   );
 };

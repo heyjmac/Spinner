@@ -6,7 +6,7 @@ let tray;
 
 app.whenReady().then(() => {
   win = new BrowserWindow({
-    width: 1000,
+    width: 880,
     height: 100,
     frame: false,
     alwaysOnTop: true,
