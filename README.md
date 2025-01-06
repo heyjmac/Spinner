@@ -39,7 +39,7 @@ Spinner applies the SPIN methodology to sales training and performance measureme
 
 ## User Interface
 
-Spinner’s interface was built using [Webcrumbs Frontend AI](https://tools.webcrumbs.org). It is practical and designed to meet user needs. Explore it through this [link](https://tools.webcrumbs.org/example-link).
+Spinner’s interface was built using [Webcrumbs Frontend AI](https://tools.webcrumbs.org). It is practical and designed to meet user needs. Explore it through this [link](https://tools.webcrumbs.org).
 
 ![Webcrumbs](interface.png)
 
