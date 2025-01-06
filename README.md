@@ -66,4 +66,4 @@ Contributions are welcome. To contribute:
 
 ---
 
-**Crafted by @heyjmac using Webcrumbs**
+**Crafted by @heyjmac with [Webcrumbs](https://webcrumbs.org/frontend-ai)**
